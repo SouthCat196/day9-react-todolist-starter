@@ -1,6 +1,7 @@
 import {useContext, useState} from "react";
-import {TodoContext} from "../App";
 import styles from "../css/todogenerator.module.css"
+import {TodoContext} from "../context/TodoContext";
+import {ADD} from "../constant/TodoListConstant";
 
 const TodoGenerator = () => {
 
@@ -13,7 +14,7 @@ const TodoGenerator = () => {
 
     const handleAdd = () => {
         if (text !== "") {
-            dispatch({type: "ADD", payload: text});
+            dispatch({type: ADD, payload: text});
         }
     }
 

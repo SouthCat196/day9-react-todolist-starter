@@ -1,18 +1,13 @@
-import {createContext, useReducer} from "react";
 import './App.css';
 import TodoList from "./components/TodoList";
-import {initialState, todoReducer} from "./context/todoReducer";
-
-export const TodoContext = createContext();
+import {TodoProvider} from "./context/TodoContext"
 
 function App() {
-    const [state, dispatch] = useReducer(todoReducer, initialState);
-
     return (
         <div className="App">
-            <TodoContext.Provider value={{state, dispatch}}>
+            <TodoProvider>
                 <TodoList/>
-            </TodoContext.Provider>
+            </TodoProvider>
         </div>
     );
 }
