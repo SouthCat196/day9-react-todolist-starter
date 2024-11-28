@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {TodoContext} from "../App";
-import styles from "../css/Todoitem.module.css"
+import styles from "../css/todoitem.module.css"
 
 const TodoItem = (props) => {
 
