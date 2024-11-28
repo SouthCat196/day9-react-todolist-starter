@@ -1,5 +1,6 @@
 import {useContext, useState} from "react";
 import {TodoContext} from "../App";
+import styles from "../css/todogenerator.module.css"
 
 const TodoGenerator = () => {
 
@@ -17,8 +18,8 @@ const TodoGenerator = () => {
     }
 
     return (
-        <div>
-            <input value={text} onChange={handleChange}/>
+        <div className={styles.todoGenerator}>
+            <input value={text} onChange={handleChange} maxLength={100}/>
             <button onClick={handleAdd}>add</button>
         </div>
     )

@@ -17,7 +17,7 @@ const TodoItem = (props) => {
     }
 
     return (
-        <div>
+        <div className={styles.todoItem}>
             <span className={done ? styles.done : styles.not_done}
                   onClick={handleToggleCompletion}>{text}</span>
             <button onClick={handleDelete}>X</button>
