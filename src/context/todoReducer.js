@@ -1,9 +1,11 @@
-import {ADD, DELETE, TOGGLE} from "../constant/TodoListConstant";
+import {ADD, DELETE, INIT, TOGGLE} from "../constant/TodoListConstant";
 
 export const initialState = [];
 
 export const todoReducer = (state, action) => {
     switch (action.type) {
+        case INIT:
+            return action.payload;
         case ADD:
             return [...state, {id: Date.now(), text: action.payload, done: false}]
         case DELETE:
