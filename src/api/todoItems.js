@@ -11,7 +11,8 @@ export const getTodoItems = async () => {
 }
 
 export const addTodoItem = async (todoItem) => {
-    await axiosInstance.post("/TodoItems", todoItem);
+    const resp = await axiosInstance.post("/TodoItems", todoItem);
+    return resp.data;
 }
 
 export const deleteTodoItem = async (id) => {

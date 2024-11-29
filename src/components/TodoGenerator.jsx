@@ -14,10 +14,12 @@ const TodoGenerator = () => {
     }
 
     const handleAdd = () => {
+        setText(text.trim);
         if (text !== "") {
-            addTodoItem({id: Date.now(), text: text, done: false})
-                .then(() => {
-                    dispatch({type: ADD, payload: text});
+            const newTodoItem = {text, done: false};
+            addTodoItem(newTodoItem)
+                .then((resp) => {
+                    dispatch({type: ADD, payload: resp});
                     setText("");
                 })
         }
