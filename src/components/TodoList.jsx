@@ -1,6 +1,5 @@
 import TodoGroup from "./TodoGroup";
 import TodoGenerator from "./TodoGenerator";
-import styles from "../css/todolist.module.css"
 
 const TodoList = () => {
     return (

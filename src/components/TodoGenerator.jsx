@@ -15,6 +15,7 @@ const TodoGenerator = () => {
     const handleAdd = () => {
         if (text !== "") {
             dispatch({type: ADD, payload: text});
+            setText("");
         }
     }
 
