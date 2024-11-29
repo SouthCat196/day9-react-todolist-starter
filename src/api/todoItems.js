@@ -9,3 +9,7 @@ export const getTodoItems = async () => {
     const resp = await axiosInstance.get("/TodoItems");
     return resp.data;
 }
+
+export const addTodoItem = async (todoItem) => {
+    await axiosInstance.post("/TodoItems", todoItem)
+}

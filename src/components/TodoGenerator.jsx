@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import styles from "../css/todogenerator.module.css"
 import {TodoContext} from "../context/TodoContext";
 import {ADD} from "../constant/TodoListConstant";
+import {addTodoItem} from "../api/todoItems";
 
 const TodoGenerator = () => {
 
@@ -14,8 +15,11 @@ const TodoGenerator = () => {
 
     const handleAdd = () => {
         if (text !== "") {
-            dispatch({type: ADD, payload: text});
-            setText("");
+            addTodoItem({id: Date.now(), text: text, done: false})
+                .then(() => {
+                    dispatch({type: ADD, payload: text});
+                    setText("");
+                })
         }
     }
 
