@@ -18,3 +18,8 @@ export const addTodoItem = async (todoItem) => {
 export const deleteTodoItem = async (id) => {
     await axiosInstance.delete(`/TodoItems/${id}`);
 }
+
+export const toggleTodoItem = async (todoItem) => {
+    const resp = await axiosInstance.put(`/TodoItems/${todoItem.id}`, todoItem);
+    return resp.data;
+}
