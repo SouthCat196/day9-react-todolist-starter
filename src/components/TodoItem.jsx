@@ -2,6 +2,7 @@ import {useContext} from "react";
 import styles from "../css/todoitem.module.css"
 import {TodoContext} from "../context/TodoContext";
 import {DELETE, TOGGLE} from "../constant/TodoListConstant";
+import {deleteTodoItem} from "../api/todoItems";
 
 const TodoItem = (props) => {
 
@@ -10,7 +11,9 @@ const TodoItem = (props) => {
     const {dispatch} = useContext(TodoContext);
 
     const handleDelete = () => {
-        dispatch({type: DELETE, payload: id})
+        deleteTodoItem(id).then(() => {
+            dispatch({type: DELETE, payload: id})
+        })
     }
 
     const handleToggleCompletion = () => {
