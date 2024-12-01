@@ -12,7 +12,8 @@ import {
     YES
 } from "../constant/TodoListConstant";
 import {deleteTodoItem, toggleTodoItem} from "../api/todoItems";
-import {message, Popconfirm} from "antd";
+import {Button, Col, message, Popconfirm, Row} from "antd";
+import {DeleteOutlined, FormOutlined} from "@ant-design/icons";
 
 const TodoItem = (props) => {
 
@@ -38,20 +39,26 @@ const TodoItem = (props) => {
     }
 
     return (
-        <div className={styles.todoItem}>
-            <span className={done ? styles.done : styles.notDone}
-                  onClick={handleToggleCompletion}>{text}</span>
-            <Popconfirm
-                title={BEFORE_DELETE_TITLE}
-                description={BEFORE_DELETE_DESCRIPTION}
-                onConfirm={handleDelete}
-                onCancel={null}
-                okText={YES}
-                cancelText={NO}
-            >
-                <button>X</button>
-            </Popconfirm>
-        </div>
+        <Row className={styles.todoItem} align="middle" justify="space-between">
+            <Col flex="auto">
+                <span className={done ? styles.done : styles.notDone} onClick={handleToggleCompletion}>
+                    {text}
+                </span>
+            </Col>
+            <Col>
+                <Button type="primary" className={styles.button} shape="circle" icon={<FormOutlined/>}/>
+                <Popconfirm
+                    title={BEFORE_DELETE_TITLE}
+                    description={BEFORE_DELETE_DESCRIPTION}
+                    onConfirm={handleDelete}
+                    onCancel={null}
+                    okText={YES}
+                    cancelText={NO}
+                >
+                    <Button className={styles.button} shape="circle" icon={<DeleteOutlined/>} danger/>
+                </Popconfirm>
+            </Col>
+        </Row>
     )
 }
 

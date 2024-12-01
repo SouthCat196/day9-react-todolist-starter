@@ -1,5 +1,7 @@
 .todoItem {
     display: flex;
+    justify-content: space-between;
+    align-content: center;
     width: 1200px;
     padding: 10px;
     margin: 10px auto;
@@ -8,17 +10,12 @@
 }
 
 .todoItem span {
-    flex-grow: 1;
     cursor: pointer;
 }
 
-.todoItem button {
-    width: 30px;
-    background-color: #c8535f;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+.button {
+    width: 50px;
+    margin: 0px 3px;
 }
 
 .done {
