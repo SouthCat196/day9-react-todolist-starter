@@ -1,4 +1,4 @@
-import {ADD, DELETE, INIT, TOGGLE} from "../constant/TodoListConstant";
+import {ADD, DELETE, INIT, UPDATE} from "../constant/TodoListConstant";
 
 export const initialState = [];
 
@@ -10,9 +10,9 @@ export const todoReducer = (state, action) => {
             return [...state, action.payload]
         case DELETE:
             return state.filter(todo => todo.id !== action.payload);
-        case TOGGLE:
+        case UPDATE:
             return state.map((todo) =>
-                todo.id === action.payload ? { ...todo, done: !todo.done } : todo
+                todo.id === action.payload.id ? action.payload : todo
             );
         default:
             return state;

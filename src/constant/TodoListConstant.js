@@ -1,6 +1,6 @@
 export const ADD = "ADD";
 export const DELETE = "DELETE";
-export const TOGGLE = "TOGGLE";
+export const UPDATE = "UPDATE";
 export const INIT = "INIT";
 
 export const TODO_LIST = "todo_list"
@@ -14,6 +14,8 @@ export const DELETE_NOTICE = "Delete OK !";
 export const DONE_NOTICE = "Well done !!!";
 export const BEFORE_DELETE_TITLE = "Delete the todo";
 export const BEFORE_DELETE_DESCRIPTION = "Are you sure to delete this todo?";
+export const NOTHING_MODIFIED_NOTICE = "Nothing has been modified, pls check again !";
+export const MODIFIED_NOTICE = "Update success!";
 
 export const YES = "Yes";
 export const NO = "No";
