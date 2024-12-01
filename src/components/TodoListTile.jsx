@@ -1,7 +1,5 @@
-import {TODO_LIST_TITLE} from "../constant/TodoListConstant";
-
 const TodoListTile = (props) => {
-    return(
+    return (
         <h1>{props.title}</h1>
     )
 }

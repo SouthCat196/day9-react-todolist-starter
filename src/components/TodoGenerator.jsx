@@ -10,7 +10,6 @@ const TodoGenerator = () => {
     const [text, setText] = useState("")
     const {dispatch} = useContext(TodoContext);
     const [addLoading, setAddLoading] = useState(false);
-    const [messageApi, contextHolder] = message.useMessage();
 
     const handleChange = (event) => {
         setText(event.target.value);
@@ -34,7 +33,6 @@ const TodoGenerator = () => {
     return (
         <div className={styles.todoGenerator}>
             <input value={text} onChange={handleChange} maxLength={100}/>
-            {/*<button onClick={handleAdd}>add</button>*/}
             <Button
                 type="primary"
                 loading={addLoading}
