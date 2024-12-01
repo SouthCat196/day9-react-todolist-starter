@@ -13,15 +13,12 @@
 }
 
 .todoItem button {
-    background-color: #dc3545;
+    width: 30px;
+    background-color: #c8535f;
     border: none;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.todoItem button:hover {
-    background-color: #c82333;
 }
 
 .done {

@@ -1,15 +1,12 @@
-import {useContext} from "react";
-import {TodoContext} from "../context/TodoContext";
+import TodoGroup from "./TodoGroup";
+import {DONE_LIST, DONE_LIST_TITLE, TODO_LIST_TITLE} from "../constant/TodoListConstant";
+import TodoListTile from "./TodoListTile";
 
 const DoneList = () => {
-    const {state} = useContext(TodoContext);
-    const doneList = state.filter((todo) => todo.done);
-
     return (
         <div>
-            {doneList.map((todo) => {
-                return <div>{todo.text}</div>
-            })}
+            <TodoListTile title={DONE_LIST_TITLE}/>
+            <TodoGroup listType={DONE_LIST}/>
         </div>
     )
 }
