@@ -5,24 +5,26 @@ import {BrowserRouter as Router, Link, Navigate, Route, Routes} from "react-rout
 import NotFound from "./components/NotFound";
 import DoneList from "./components/DoneList";
 import Navigation from "./components/Navigation";
+import HardStop from "./components/HardStop";
 
 function App() {
-    return (
-        <div className="App">
-            <TodoProvider>
-                <Router>
-                    <Navigation/>
-                    <Routes>
-                        <Route path={"/"} element={<Navigate to={"/todo-list"}/>}/>
-                        <Route path={"/todo-list"} element={<TodoList/>}/>
-                        <Route path={"/done-list"} element={<DoneList/>}/>
-                        <Route path={"/help"} element={<DoneList/>}/>
-                        <Route path={"*"} element={<NotFound/>}/>
-                    </Routes>
-                </Router>
-            </TodoProvider>
-        </div>
-    );
+  return (
+    <div className="App">
+      <TodoProvider>
+        <Router>
+          <Navigation/>
+          <Routes>
+            <Route path={"/"} element={<Navigate to={"/todo-list"}/>}/>
+            <Route path={"/todo-list"} element={<TodoList/>}/>
+            <Route path={"/done-list"} element={<DoneList/>}/>
+            <Route path={"/help"} element={<DoneList/>}/>
+            <Route path={"/hard-stop"} element={<HardStop/>}/>
+            <Route path={"*"} element={<NotFound/>}/>
+          </Routes>
+        </Router>
+      </TodoProvider>
+    </div>
+  );
 }
 
 export default App;

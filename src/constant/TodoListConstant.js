@@ -21,3 +21,5 @@ export const MODIFIED_WINDOW_TITLE = "Edit Todo";
 
 export const YES = "Yes";
 export const NO = "No";
+
+export const TODO_LIST_LINK = ""
