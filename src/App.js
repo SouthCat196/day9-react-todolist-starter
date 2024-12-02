@@ -16,6 +16,7 @@ function App() {
                         <Route path={"/"} element={<Navigate to={"/todo-list"}/>}/>
                         <Route path={"/todo-list"} element={<TodoList/>}/>
                         <Route path={"/done-list"} element={<DoneList/>}/>
+                        <Route path={"/help"} element={<DoneList/>}/>
                         <Route path={"*"} element={<NotFound/>}/>
                     </Routes>
                 </Router>

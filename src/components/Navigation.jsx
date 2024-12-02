@@ -12,6 +12,9 @@ const Navigation = () => (
         <Item key="done-list">
             <Link to="/done-list">Done List</Link>
         </Item>
+        <Item key="help">
+            <Link to="/help">Help</Link>
+        </Item>
     </Menu>
 );
 

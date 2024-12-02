@@ -29,7 +29,7 @@ const TodoGroup = ({listType}) => {
                         </Typography.Text>
                     }/> : null}
             {filteredTodoList.map((todoItem, _) => {
-                return <TodoItem key={todoItem.id} todoItem={todoItem}/>
+                return <TodoItem key={todoItem.id} todoItem={todoItem} listType={listType}/>
             })}
         </div>
     )

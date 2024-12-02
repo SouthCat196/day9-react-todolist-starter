@@ -5,10 +5,12 @@ import {
     BEFORE_DELETE_DESCRIPTION,
     BEFORE_DELETE_TITLE,
     DELETE,
-    DELETE_NOTICE,
-    DONE_NOTICE, MODIFIED_NOTICE,
-    NO, NOTHING_MODIFIED_NOTICE,
-    TOGGLE, UPDATE,
+    DELETE_NOTICE, DONE_LIST,
+    DONE_NOTICE,
+    MODIFIED_NOTICE, MODIFIED_WINDOW_TITLE,
+    NO,
+    NOTHING_MODIFIED_NOTICE, TODO_LIST,
+    UPDATE,
     YES
 } from "../constant/TodoListConstant";
 import {deleteTodoItem, updateTodoItem} from "../api/todoItems";
@@ -31,6 +33,9 @@ const TodoItem = (props) => {
     }
 
     const handleToggleCompletion = () => {
+        if (props.listType === DONE_LIST) {
+            return;
+        }
         if (!done) {
             message.success(DONE_NOTICE)
         }
@@ -41,52 +46,65 @@ const TodoItem = (props) => {
     }
 
     const openEditWindow = () => {
+        setEditText(text);
         setIsEditWindowOpen(true);
     }
 
     const handleOk = () => {
-        if(editText === text){
+        if (editText === text) {
             message.info(NOTHING_MODIFIED_NOTICE);
-        }else {
+        } else {
             updateTodoItem({id, text: editText, done})
                 .then(() => {
-                    dispatch({type: UPDATE, payload: {id, text: editText, done:false}})
-                })
-            setIsEditWindowOpen(false);
-            message.success(MODIFIED_NOTICE);
+                    dispatch({type: UPDATE, payload: {id, text: editText, done: false}})
+                    message.success(MODIFIED_NOTICE);
+                }).finally(() => {
+                setIsEditWindowOpen(false);
+            })
         }
     }
 
     const handleCancel = () => {
+        setEditText(text);
         setIsEditWindowOpen(false);
     }
 
+    const handleEditTextChange = (event) => {
+        if (event.target.value.length >= 100) {
+            return;
+        }
+        setEditText(event.target.value);
+    }
 
     return (
         <div>
             <Row className={styles.todoItem} align="middle" justify="space-between">
+                {props.listType === TODO_LIST &&
+                    <Col>
+                        <Button type="primary" className={styles.button} shape="circle" icon={<FormOutlined/>}
+                                onClick={openEditWindow}/>
+                    </Col>}
                 <Col flex="auto" onClick={handleToggleCompletion}>
                 <span className={done ? styles.done : styles.notDone}>
                     {text}
                 </span>
                 </Col>
-                <Col>
-                    <Button type="primary" className={styles.button} shape="circle" icon={<FormOutlined/>}
-                            onClick={openEditWindow}/>
-                    <Popconfirm
-                        title={BEFORE_DELETE_TITLE}
-                        description={BEFORE_DELETE_DESCRIPTION}
-                        onConfirm={handleDelete}
-                        onCancel={null}
-                        okText={YES}
-                        cancelText={NO}
-                    >
-                        <Button className={styles.button} shape="circle" icon={<DeleteOutlined/>} danger/>
-                    </Popconfirm>
-                </Col>
+                {props.listType === TODO_LIST &&
+                    <Col>
+                        <Popconfirm
+                            title={BEFORE_DELETE_TITLE}
+                            description={BEFORE_DELETE_DESCRIPTION}
+                            onConfirm={handleDelete}
+                            onCancel={null}
+                            okText={YES}
+                            cancelText={NO}
+                        >
+                            <Button className={styles.button} shape="circle" icon={<DeleteOutlined/>} danger/>
+                        </Popconfirm>
+                    </Col>}
             </Row>
-            <Modal title="编辑任务" open={isEditWindowOpen} onOk={handleOk} onCancel={handleCancel}>
-                <Input value={editText} onChange={(e) => setEditText(e.target.value)}/>
+            <Modal title={MODIFIED_WINDOW_TITLE} open={isEditWindowOpen} onOk={handleOk} onCancel={handleCancel}>
+                <Input value={editText} onChange={handleEditTextChange}/>
             </Modal>
         </div>
     )

@@ -5,6 +5,7 @@ export const INIT = "INIT";
 
 export const TODO_LIST = "todo_list"
 export const DONE_LIST = "done_list"
+export const HELP_TITLE = "Help"
 
 export const TODO_LIST_TITLE = "Todo List"
 export const DONE_LIST_TITLE = "Done List"
@@ -16,6 +17,7 @@ export const BEFORE_DELETE_TITLE = "Delete the todo";
 export const BEFORE_DELETE_DESCRIPTION = "Are you sure to delete this todo?";
 export const NOTHING_MODIFIED_NOTICE = "Nothing has been modified, pls check again !";
 export const MODIFIED_NOTICE = "Update success!";
+export const MODIFIED_WINDOW_TITLE = "Edit Todo";
 
 export const YES = "Yes";
 export const NO = "No";
